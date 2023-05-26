@@ -1,5 +1,5 @@
 import mediapipe as mp
-import cv2 
+import cv2, math
 mp_face_mesh = mp.solutions.face_mesh
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -33,6 +33,13 @@ with mp_face_mesh.FaceMesh(
                         mp_drawing.DrawingSpec(color=(150,150,150),thickness=1)"""
                         top = (face_landmarks.landmark[10].x, face_landmarks.landmark[10].y)
                         bottom = (face_landmarks.landmark[152].x, face_landmarks.landmark[152].y)
+
+                        ojo_derecho_supe =(face_landmarks.landmark[159].x, face_landmarks.landmark[159].y)
+                        ojo_derecho_infe = (face_landmarks.landmark[145].x, face_landmarks.landmark[145].y)
+
+                        ojo_izquierdo_supe =(face_landmarks.landmark[386].x, face_landmarks.landmark[386].y)
+                        ojo_izquierdo_infe = (face_landmarks.landmark[374].x, face_landmarks.landmark[374].y)
+
                     
 
                         cv2.line(
@@ -44,6 +51,20 @@ with mp_face_mesh.FaceMesh(
 
                         cv2.circle(image, (int(top[0] * width), int(top[1] * height)), 8, (0,0,255), -1)
                         cv2.circle(image, (int(bottom[0] * width), int(bottom[1] * height)), 8, (0,0,255), -1)
+
+                        cv2.circle(image, (int(ojo_derecho_supe[0] * width), int(ojo_derecho_supe[1] * height)), 2, (255,0,0), -1)
+                        cv2.circle(image, (int(ojo_derecho_infe[0] * width), int(ojo_derecho_infe[1] * height)), 2, (255,0,0), -1)
+                        cv2.circle(image, (int(ojo_izquierdo_supe[0] * width), int(ojo_izquierdo_supe[1] * height)), 2, (255,0,0), -1)
+                        cv2.circle(image, (int(ojo_izquierdo_infe[0] * width), int(ojo_izquierdo_infe[1] * height)), 2, (255,0,0), -1)
+
+
+
+                        fuente = cv2.FONT_HERSHEY_SIMPLEX
+                        tamano_letra = 1
+                        angulo = round(math.degrees(math.atan2(bottom[1] - top[1], bottom[0] - top[0])))
+                        cv2.putText(image,'angulo: ' + str(angulo),(25,65),fuente,tamano_letra,(0, 255, 0),thickness=1)
+
+                        
                         
                        
                         
