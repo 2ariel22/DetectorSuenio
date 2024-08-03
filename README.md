@@ -1,5 +1,6 @@
 <h1 align="center">Detector de sueño para conductores
-<img src="https://github.com/user-attachments/assets/1796e6a7-f925-40d9-b2a8-19fa47f4b626" width=400></h1>
+</h1>
+<h2 aling="center"><img src="https://github.com/user-attachments/assets/1796e6a7-f925-40d9-b2a8-19fa47f4b626" width=400></h2>
 
 <h3 aling="center">En este proyecto desarrolle un detector facial para determinar el cansancio en conductores de vehiculos basondonos en la inclinacion de su rostro(cabeceos) </h3>
 
